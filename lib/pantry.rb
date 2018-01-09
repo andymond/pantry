@@ -45,9 +45,9 @@ class Pantry
   end
 
   def what_can_I_make?
-    stock.map do |stock_item|
-      recipes_with_ingredients.select do |recipe, ingredients|
-        ingredients.include?(stock_item)
+    recipes_with_ingredients.map do |recipe, ingredients|
+      recipe if ingredients.each_key do |ingredient|
+        stock.include?(ingredient)
       end
     end
   end

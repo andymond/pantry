@@ -145,7 +145,7 @@ class PantryTest < Minitest::Test
     pantry = Pantry.new
     r1 = Recipe.new("Cheese Pizza")
     r1.add_ingredient("Cheese", 20)
-    r1.add_ingredient("Flor", 20)
+    r1.add_ingredient("Flour", 20)
 
     r2 = Recipe.new("Pickles")
     r2.add_ingredient("Brine", 10)
