@@ -44,7 +44,7 @@ class Pantry
     ingredients_per_recipe
   end
 
-  def what_can_I_make?
+  def what_can_i_make
     ingredient_check = recipes_with_ingredients.map do |recipe, ingredients|
       ingredients.map do |ingredient|
         recipe if stock.keys.include?(ingredient[0]) && stock[ingredient[0]] >= ingredient[1]
