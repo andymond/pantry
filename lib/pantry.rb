@@ -56,7 +56,9 @@ class Pantry
   end
 
   def how_many_can_i_make
-
+    what_can_i_make.select do |recipe|
+      what_can_i_make.include?(recipe)
+    end
   end
 
 end
