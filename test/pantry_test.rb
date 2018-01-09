@@ -84,6 +84,38 @@ class PantryTest < Minitest::Test
     assert_equal printout, pantry.print_shopping_list
   end
 
+  def test_it_starts_with_empty_cookbook
+    pantry = Pantry.new
+
+    assert_equal [], pantry.cookbook
+  end
+
+  def test_it_can_add_to_cookbook
+    pantry = Pantry.new
+    r1 = Recipe.new("Cheese Pizza")
+    r1.add_ingredient("Cheese", 20)
+    r1.add_ingredient("Flour", 20)
+
+    r2 = Recipe.new("Pickles")
+    r2.add_ingredient("Brine", 10)
+    r2.add_ingredient("Cucumbers", 30)
+
+    r3 = Recipe.new("Peanuts")
+    r3.add_ingredient("Raw nuts", 10)
+    r3.add_ingredient("Salt", 10)
+
+    pantry.add_to_cookbook(r1)
+    pantry.add_to_cookbook(r2)
+    pantry.add_to_cookbook(r3)
+
+    pantry.cookbook.each do |recipe|
+      assert_instance_of Recipe, recipe
+    end
+    pantry.cookbook.each do |recipe|
+      assert_equal 2, recipe.ingredients.count
+    end
+  end
+
 
 
 end

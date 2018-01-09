@@ -1,11 +1,13 @@
 class Pantry
 
   attr_reader :stock,
-              :shopping_list
+              :shopping_list,
+              :cookbook
 
   def initialize
     @stock = Hash.new(0)
     @shopping_list = Hash.new
+    @cookbook = []
   end
 
   def stock_check(item)
@@ -28,6 +30,10 @@ class Pantry
       printout += "* #{ingredient}: #{amount}\n"
     end
     printout.chomp
+  end
+
+  def add_to_cookbook(recipe)
+    @cookbook << recipe
   end
 
 end
