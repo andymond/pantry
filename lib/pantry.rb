@@ -46,10 +46,11 @@ class Pantry
 
   def what_can_I_make?
     recipes_with_ingredients.map do |recipe, ingredients|
-      recipe if ingredients.each_key do |ingredient|
-        stock.include?(ingredient)
-      end
-    end
+      ingredients.map.with_index do |ingredient, index|
+        recipe if stock.keys.include?(ingredient[0]) && stock.values[index] >= ingredient[1]
+      end.compact.uniq
+    end.flatten
+
   end
 
 end
