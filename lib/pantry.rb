@@ -55,4 +55,8 @@ class Pantry
     end.flatten.uniq
   end
 
+  def how_many_can_i_make
+
+  end
+
 end
