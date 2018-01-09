@@ -23,10 +23,11 @@ class Pantry
   end
 
   def print_shopping_list
-    printout = @shopping_list.reduce("") do |list, ingredient|
-      list + "* #{shopping_list.invert[ingredient[1]]} : #{shopping_list[ingredient[0]]}\n"
+    printout = ""
+    @shopping_list.each_pair do |ingredient, amount|
+      printout += "* #{ingredient}: #{amount}\n"
     end
-    printout
+    printout.chomp
   end
 
 end
