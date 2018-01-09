@@ -36,4 +36,20 @@ class Pantry
     @cookbook << recipe
   end
 
+  def recipes_with_ingredients
+    ingredients_per_recipe = {}
+    cookbook.each do |recipe|
+      ingredients_per_recipe[recipe.name] = recipe.ingredients
+    end
+    ingredients_per_recipe
+  end
+
+  def what_can_I_make?
+    stock.map do |stock_item|
+      recipes_with_ingredients.select do |recipe, ingredients|
+        ingredients.include?(stock_item)
+      end
+    end
+  end
+
 end
